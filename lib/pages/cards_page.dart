@@ -1,5 +1,6 @@
 import 'package:dribbble_design_challenge_credit_card_kashware/widgets/home_row_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class CardsPage extends StatefulWidget {
   CardsPage({Key key}) : super(key: key);
@@ -9,6 +10,7 @@ class CardsPage extends StatefulWidget {
 }
 
 class _CardsPageState extends State<CardsPage> {
+  bool cardchange = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,7 @@ class _CardsPageState extends State<CardsPage> {
               end: Alignment.bottomCenter,
               colors: [
                 Theme.of(context).primaryColor,
-                Color(0xff0E1F53),
+                Color(0xff08153F),
               ],
             ),
           ),
@@ -44,14 +46,17 @@ class _CardsPageState extends State<CardsPage> {
                   padding: const EdgeInsets.only(top: 30, bottom: 50),
                   child: Text(
                     'Credit Card',
-                    style:
-                        Theme.of(context).textTheme.title.copyWith(fontSize: 30),
+                    style: Theme.of(context)
+                        .textTheme
+                        .title
+                        .copyWith(fontSize: 30),
                   ),
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height / 7,
                   // width: MediaQuery.of(context).size.width / 1.2,
                   child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -74,6 +79,46 @@ class _CardsPageState extends State<CardsPage> {
                         ),
                       ],
                     ),
+                  ),
+                ),
+                Container(
+                  height: 520,
+                  // padding: EdgeInsets.symmetric(vertical: 20),
+
+                  child: Swiper(
+                    layout: SwiperLayout.CUSTOM,
+                    customLayoutOption:
+                        new CustomLayoutOption(startIndex: -1, stateCount: 3)
+                            .addRotate(
+                                [-45.0 / 180, 0.0, 45.0 / 180]).addTranslate([
+                      new Offset(-280.0, -35.0),
+                      new Offset(0.0, 0.0),
+                      new Offset(280.0, -35)
+                    ]),
+                    itemWidth: 250.0,
+                    itemHeight: 372.0,
+                    // curve: Curves.easeInOutExpo,
+                    itemBuilder: (context, index) {
+                      return new Container(
+                        padding: EdgeInsets.all(10),
+                        // color: Colors.grey,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              'assets/images/Card2.png',
+                            )
+                            // : Image.asset(
+                            //     'assets/images/Card2.png',
+                            //   ),
+                            ),
+                        // new Center(
+                        //   child: new Text("$index"),
+                        // ),
+                      );
+                    },
+                    itemCount: 3,
+                    pagination: SwiperPagination(margin: EdgeInsets.all(30)),
+                    physics: BouncingScrollPhysics(),
                   ),
                 )
               ],
