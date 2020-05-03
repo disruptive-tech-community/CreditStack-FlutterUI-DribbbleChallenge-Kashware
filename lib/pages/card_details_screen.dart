@@ -37,6 +37,19 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
     super.dispose();
   }
 
+  Widget flightShuttleBuilder(
+    BuildContext flightContext,
+    Animation<double> animation,
+    HeroFlightDirection flightDirection,
+    BuildContext fromHeroContext,
+    BuildContext toHeroContext,
+  ) {
+    return DefaultTextStyle(
+      style: DefaultTextStyle.of(toHeroContext).style,
+      child: toHeroContext.widget,
+    );
+  }
+
   List<Widget> cards = [
     Container(
       // padding: EdgeInsets.all(10),
@@ -872,11 +885,11 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.attach_money),
+        leading: Icon(Icons.work),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Icon(Icons.line_weight),
+            child: Icon(Icons.insert_chart),
           )
         ],
         backgroundColor: Theme.of(context).primaryColor,
@@ -1109,6 +1122,7 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
               // height: 350,
               width: 220,
               child: Hero(
+                flightShuttleBuilder: flightShuttleBuilder,
                 tag: '${widget.index}',
                 child: Transform.rotate(
                   angle: math.pi / 2,

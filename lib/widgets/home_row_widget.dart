@@ -23,7 +23,7 @@ class HomeRowWidget extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 0),
               child: Icon(
                 icon,
-                color: title == 'OnePay'
+                color: title == 'Wallet'
                     ? Colors.white
                     : Colors.white.withAlpha(100),
                 size: 35,
