@@ -12,7 +12,7 @@ class HomeRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 22),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.3,
         child: Column(
@@ -23,7 +23,7 @@ class HomeRowWidget extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 0),
               child: Icon(
                 icon,
-                color: title == 'Wallet'
+                color: title == 'OnePay'
                     ? Colors.white
                     : Colors.white.withAlpha(100),
                 size: 35,
