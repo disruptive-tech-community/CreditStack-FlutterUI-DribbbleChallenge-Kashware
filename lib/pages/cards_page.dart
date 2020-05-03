@@ -1,3 +1,4 @@
+import 'package:dribbble_design_challenge_credit_card_kashware/faded_page_route.dart';
 import 'package:dribbble_design_challenge_credit_card_kashware/pages/card_details_screen.dart';
 import 'package:dribbble_design_challenge_credit_card_kashware/widgets/home_row_widget.dart';
 import 'package:flutter/material.dart';
@@ -86,31 +87,30 @@ class _CardsPageState extends State<CardsPage> {
                 height: 520,
                 // padding: EdgeInsets.symmetric(vertical: 20),
 
-                child: Hero(
-                  tag: '1',
-                  child: Swiper(
-                    layout: SwiperLayout.CUSTOM,
-                    customLayoutOption:
-                        new CustomLayoutOption(startIndex: 2, stateCount: 3)
-                            .addRotate(
-                                [-45.0 / 180, 0.0, 45.0 / 180]).addTranslate([
-                      // currentIndex == 0
-                      //     ? Offset(-480.0, -35.0)
-                      //     :
-                      Offset(-280.0, -35.0),
-                      new Offset(0.0, 0.0),
-                      // currentIndex == 3
-                      //     ? Offset(480.0, -35.0)
-                      //     :
-                      Offset(280.0, -35)
-                    ]),
-                    itemWidth: 250.0,
-                    itemHeight: 372.0,
-                    // curve: Curves.easeInOutExpo,
-                    itemBuilder: (context, index) {
-                      return new Container(
-                        padding: EdgeInsets.all(10),
-                        // color: Colors.grey,
+                // child: Hero(
+                //   tag: '1',
+                child: Swiper(
+                  layout: SwiperLayout.CUSTOM,
+                  customLayoutOption: new CustomLayoutOption(
+                          startIndex: 2, stateCount: 3)
+                      .addRotate([-45.0 / 180, 0.0, 45.0 / 180]).addTranslate([
+                    currentIndex == 0
+                        ? Offset(-480.0, -35.0)
+                        : Offset(-280.0, -35.0),
+                    new Offset(0.0, 0.0),
+                    currentIndex == 3
+                        ? Offset(480.0, -35.0)
+                        : Offset(280.0, -35)
+                  ]),
+                  itemWidth: 250.0,
+                  itemHeight: 372.0,
+                  // curve: Curves.easeInOutExpo,
+                  itemBuilder: (context, index) {
+                    return new Container(
+                      padding: EdgeInsets.all(10),
+                      // color: Colors.grey,
+                      child: Hero(
+                        tag: '$index',
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: Stack(
@@ -123,49 +123,56 @@ class _CardsPageState extends State<CardsPage> {
                                       : 'assets/images/Card2.png',
                                 ),
                               ),
-                              Center(
-                                  child: Text(
-                                index == 0
-                                    ? 'HDFC Bank'
-                                    : index == 1
-                                        ? 'SBI'
-                                        : index == 2 ? 'Yes Bank' : 'PNB',
-                                style: TextStyle(color: Colors.white),
-                              )),
+                              // Center(
+                              //     child: Text(
+                              //   index == 0
+                              //       ? 'HDFC Bank'
+                              //       : index == 1
+                              //           ? 'SBI'
+                              //           : index == 2 ? 'Yes Bank' : 'PNB',
+                              //   style: TextStyle(color: Colors.white),
+                              // )),
                             ],
                           ),
                         ),
-                      );
-                    },
-                    // outer: true,
-                    physics: BouncingScrollPhysics(),
-                    itemCount: 4,
-                    loop: false,
-                    pagination: SwiperPagination(
-                      margin: EdgeInsets.all(30),
-                    ),
-                    // physics: BouncingScrollPhysics(),
-                    // index: 0,
-                    // onIndexChanged: (index) {
-                    //   setState(() {
-                    //     currentIndex = index;
-                    //   });
-                    // },
-                    onTap: (index) => Navigator.push(
-                        context,
-                        PageTransition(
-                            child: CardDetailsScreen(),
-                            type: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 1000))
-
-                        // MaterialPageRoute(
-                        //   builder: (context) => CardDetailsScreen(
-                        //     index: index,
-                        //   ),
-                        // ),
-                        ),
+                      ),
+                    );
+                  },
+                  // outer: true,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 4,
+                  loop: false,
+                  // fade: 200,
+                  pagination: SwiperPagination(
+                    margin: EdgeInsets.all(30),
                   ),
+                  // physics: BouncingScrollPhysics(),
+                  // index: 0,
+                  onIndexChanged: (index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                  },
+                  onTap: (index) => Navigator.push(
+                      context,
+                      FadePageRoute(
+                        builder: (context) => CardDetailsScreen(
+                          index: index,
+                        ),
+                      )
+                      // PageTransition(
+                      //     child: CardDetailsScreen(),
+                      //     type: PageTransitionType.fade,
+                      //     duration: Duration(milliseconds: 1000)
+                      //     )
+                      // MaterialPageRoute(
+                      //   builder: (context) => CardDetailsScreen(
+                      //     index: index,
+                      //   ),
+                      // ),
+                      ),
                 ),
+                // ),
               )
             ],
           ),
