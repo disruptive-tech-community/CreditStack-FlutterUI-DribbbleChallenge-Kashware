@@ -34,6 +34,85 @@ class _CardsPageState extends State<CardsPage>
     super.initState();
   }
 
+  List<Widget> cards = [
+    Container(
+      // padding: EdgeInsets.all(10),
+      // color: Colors.grey,
+      // child: Hero(
+      //   tag: '$index',
+      child: Hero(
+        tag: '0',
+        child: Container(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/Card1.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      // ),
+    ),
+    Container(
+      // padding: EdgeInsets.all(10),
+      // color: Colors.grey,
+      // child: Hero(
+      //   tag: '$index',
+      child: Hero(
+        tag: '1',
+        child: Container(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/Card2.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      // ),
+    ),
+    Container(
+      // padding: EdgeInsets.all(10),
+      // color: Colors.grey,
+      // child: Hero(
+      //   tag: '$index',
+      child: Hero(
+        tag: '2',
+        child: Container(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/Card1.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      // ),
+    ),
+    Container(
+      // padding: EdgeInsets.all(10),
+      // color: Colors.grey,
+      // child: Hero(
+      //   tag: '$index',
+      child: Hero(
+        tag: '3',
+        child: Container(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/images/Card2.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      // ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,10 +182,10 @@ class _CardsPageState extends State<CardsPage>
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 40,
               ),
               Container(
-                // height: 520,
+                height: 440,
                 // padding: EdgeInsets.symmetric(vertical: 20),
 
                 // child: Hero(
@@ -125,38 +204,19 @@ class _CardsPageState extends State<CardsPage>
                         : Offset(280.0, -35)
                   ]),
                   itemWidth: 220.0,
-                  itemHeight: 370.0,
+                  itemHeight: 350.0,
                   // curve: Curves.easeInOutExpo,
                   itemBuilder: (context, index) {
-                    return new Container(
-                      padding: EdgeInsets.all(10),
-                      // color: Colors.grey,
-                      // child: Hero(
-                      //   tag: '$index',
-                      child: Hero(
-                        tag: '$index',
-                        child: Container(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Image.asset(
-                              (index == 0 || index == 2)
-                                  ? 'assets/images/Card1.png'
-                                  : 'assets/images/Card2.png',
-                            ),
-                          ),
-                        ),
-                      ),
-                      // ),
-                    );
+                    return cards[index];
                   },
                   // outer: true,
                   physics: BouncingScrollPhysics(),
                   itemCount: 4,
                   loop: false,
-                  // fade: 200,
+                  fade: 1,
                   pagination: SwiperPagination(
                     // margin: EdgeInsets.all(30),
-                    margin: EdgeInsets.only(top: 440),
+                    margin: EdgeInsets.only(top: 420),
                     alignment: Alignment.center,
                   ),
                   // physics: BouncingScrollPhysics(),

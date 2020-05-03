@@ -36,6 +36,57 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
     super.dispose();
   }
 
+  List<Widget> cards = [
+    Container(
+      child: Container(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(24),
+          child: Image.asset(
+            'assets/images/Card1.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      // ),
+    ),
+    Container(
+      child: Container(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            'assets/images/Card2.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      // ),
+    ),
+    Container(
+      child: Container(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            'assets/images/Card1.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      // ),
+    ),
+    Container(
+      child: Container(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            'assets/images/Card2.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      // ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -257,20 +308,13 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
           Align(
             alignment: Alignment.topCenter,
             child: Container(
-              height: 350,
-              width: 350,
+              // height: 350,
+              width: 220,
               child: Hero(
                 tag: '${widget.index}',
                 child: Transform.rotate(
-                  angle: math.pi * 3 / 2,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      (widget.index == 0 || widget.index == 2)
-                          ? 'assets/images/Card1.png'
-                          : 'assets/images/Card2.png',
-                    ),
-                  ),
+                  angle: math.pi / 2,
+                  child: cards[widget.index],
                 ),
               ),
             ),
