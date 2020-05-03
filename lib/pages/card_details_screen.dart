@@ -20,11 +20,11 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
     int index = widget.index;
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 0),
+      duration: Duration(milliseconds: 600),
     )..addListener(() => setState(() {}));
     animation = CurvedAnimation(
       parent: animationController,
-      curve: Curves.elasticIn,
+      curve: Curves.linear,
     );
 
     animationController.forward();
@@ -49,7 +49,7 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
         ],
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: Text('Kashware'),
+        // title: Text('Kashware'),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -156,82 +156,107 @@ class _CardDetailsScreenState extends State<CardDetailsScreen>
         //     // );
         //   },
         //   tag: '1',
+        // child: Hero(
+        //   flightShuttleBuilder: (
+        //     BuildContext flightContext,
+        //     Animation<double> animation,
+        //     HeroFlightDirection flightDirection,
+        //     BuildContext fromHeroContext,
+        //     BuildContext toHeroContext,
+        //   ) {
+        //     return AnimatedBuilder(
+        //       animation: animationController,
+        //       builder: (BuildContext context, Widget _widget) {
+        //         return new Transform.rotate(
+        //           angle: animationController.value * math.pi / 2,
+        //           child: _widget,
+        //         );
+        //       },
+        //       child: ClipRRect(
+        //         borderRadius: BorderRadius.circular(15),
+        //         child: Container(
+        //           height: 250,
+        //           width: 372,
+        //           child: Image.asset(
+        //             (widget.index == 1 || widget.index == 3)
+        //                 ? 'assets/images/Card2.png'
+        //                 : 'assets/images/Card1.png',
+        //           ),
+        //         ),
+        //       ),
+        //     );
+        //     // ScaleTransition(
+        //     //   scale: Tween<double>(
+        //     //     begin: 0.0,
+        //     //     end: 1.0,
+        //     //   ).animate(
+        //     //     CurvedAnimation(
+        //     //       parent: animation,
+        //     //       curve: Curves.fastOutSlowIn,
+        //     //     ),
+        //     //   ),
+        //     //   child: toHeroContext.widget,
+        //     // );
+        //   },
+        //   transitionOnUserGestures: true,
+        //   tag: '${widget.index}',
         child: Hero(
-          flightShuttleBuilder: (
-            BuildContext flightContext,
-            Animation<double> animation,
-            HeroFlightDirection flightDirection,
-            BuildContext fromHeroContext,
-            BuildContext toHeroContext,
-          ) {
-            return AnimatedBuilder(
-              animation: animationController,
-              builder: (BuildContext context, Widget _widget) {
-                return new Transform.rotate(
-                  angle: animationController.value * math.pi / 2,
-                  child: _widget,
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Image.asset(
-                  (widget.index == 1 || widget.index == 3)
-                      ? 'assets/images/Card2.png'
-                      : 'assets/images/Card1.png',
-                ),
-              ),
-            );
-            // ScaleTransition(
-            //   scale: Tween<double>(
-            //     begin: 0.0,
-            //     end: 1.0,
-            //   ).animate(
-            //     CurvedAnimation(
-            //       parent: animation,
-            //       curve: Curves.fastOutSlowIn,
-            //     ),
-            //   ),
-            //   child: toHeroContext.widget,
-            // );
-          },
-          transitionOnUserGestures: true,
           tag: '${widget.index}',
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
-            child: RotatedBox(
-              quarterTurns: 1,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Container(
-                  height: 250,
-                  width: 372,
-                  child: Stack(
-                    children: [
-                      // AnimatedBuilder(
-                      //   animation: animationController,
-                      //   builder: (BuildContext context, Widget _widget) {
-                      //     return new Transform.rotate(
-                      //       angle: animationController.value * math.pi,
-                      //       child: _widget,
-                      //     );
-                      //   },
-                      //   child:
-                      Center(
-                        child: Image.asset(
-                          (widget.index == 1 || widget.index == 3)
-                              ? 'assets/images/Card2.png'
-                              : 'assets/images/Card1.png',
-                        ),
-                      ),
-                      // ),
-                      // Center(child: Text('PNB')),
-                    ],
-                  ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 10,
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Container(
+                child: Stack(
+                  children: [
+                    AnimatedBuilder(
+                      animation:
+                          // animation,
+                          animationController,
+                      builder: (BuildContext context, Widget _widget) {
+                        return new Transform.rotate(
+                          angle: animationController.value * math.pi / 2,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Container(
+                              height: 400,
+                              width: 518,
+                              child: Image.asset(
+                                (widget.index == 1 || widget.index == 3)
+                                    ? 'assets/images/Card2.png'
+                                    : 'assets/images/Card1.png',
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                // image: DecorationImage(
+                                //   image: AssetImage(
+                                //     (widget.index == 1 || widget.index == 3)
+                                //         ? 'assets/images/Card2.png'
+                                //         : 'assets/images/Card1.png',
+                                //   ),
+                                // ),
+                              ),
+
+                              // child: Image.asset(
+                              //   (widget.index == 1 || widget.index == 3)
+                              //       ? 'assets/images/Card2.png'
+                              //       : 'assets/images/Card1.png',
+                              // ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    // Center(child: Text('PNB')),
+                  ],
                 ),
               ),
             ),
           ),
         ),
+        // ),
         // ),
       ),
     );

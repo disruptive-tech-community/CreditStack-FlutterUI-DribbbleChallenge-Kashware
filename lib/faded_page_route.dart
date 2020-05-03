@@ -19,7 +19,7 @@ class FadePageRoute<T> extends PageRoute<T> {
   final bool maintainState;
 
   @override
-  Duration get transitionDuration => const Duration(milliseconds: 1000);
+  Duration get transitionDuration => const Duration(milliseconds: 600);
 
   @override
   Color get barrierColor => null;

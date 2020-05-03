@@ -12,9 +12,28 @@ class CardsPage extends StatefulWidget {
   _CardsPageState createState() => _CardsPageState();
 }
 
-class _CardsPageState extends State<CardsPage> {
+class _CardsPageState extends State<CardsPage>
+    with SingleTickerProviderStateMixin {
   bool cardchange = false;
   int currentIndex = 0;
+  AnimationController animationController;
+  Animation<double> animation;
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 1500),
+    )..addListener(() => setState(() {}));
+    animation = CurvedAnimation(
+      parent: animationController,
+      curve: Curves.linear,
+    );
+
+    animationController.forward();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +47,7 @@ class _CardsPageState extends State<CardsPage> {
         ],
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
-        title: Text('Kashware'),
+        // title: Text('Kashware'),
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -84,7 +103,7 @@ class _CardsPageState extends State<CardsPage> {
                 ),
               ),
               Container(
-                height: 520,
+                // height: 520,
                 // padding: EdgeInsets.symmetric(vertical: 20),
 
                 // child: Hero(
@@ -102,13 +121,15 @@ class _CardsPageState extends State<CardsPage> {
                         ? Offset(480.0, -35.0)
                         : Offset(280.0, -35)
                   ]),
-                  itemWidth: 250.0,
-                  itemHeight: 372.0,
+                  itemWidth: 220.0,
+                  itemHeight: 340.0,
                   // curve: Curves.easeInOutExpo,
                   itemBuilder: (context, index) {
                     return new Container(
                       padding: EdgeInsets.all(10),
                       // color: Colors.grey,
+                      // child: Hero(
+                      //   tag: '$index',
                       child: Hero(
                         tag: '$index',
                         child: ClipRRect(
@@ -136,6 +157,7 @@ class _CardsPageState extends State<CardsPage> {
                           ),
                         ),
                       ),
+                      // ),
                     );
                   },
                   // outer: true,
@@ -144,8 +166,10 @@ class _CardsPageState extends State<CardsPage> {
                   loop: false,
                   // fade: 200,
                   pagination: SwiperPagination(
-                    margin: EdgeInsets.all(30),
-                  ),
+                      // margin: EdgeInsets.all(30),
+
+                      alignment: Alignment.bottomRight,
+                      ),
                   // physics: BouncingScrollPhysics(),
                   // index: 0,
                   onIndexChanged: (index) {
