@@ -102,6 +102,9 @@ class _CardsPageState extends State<CardsPage>
                   ),
                 ),
               ),
+              SizedBox(
+                height: 50,
+              ),
               Container(
                 // height: 520,
                 // padding: EdgeInsets.symmetric(vertical: 20),
@@ -111,7 +114,7 @@ class _CardsPageState extends State<CardsPage>
                 child: Swiper(
                   layout: SwiperLayout.CUSTOM,
                   customLayoutOption: new CustomLayoutOption(
-                          startIndex: 2, stateCount: 3)
+                          startIndex: -1, stateCount: 3)
                       .addRotate([-45.0 / 180, 0.0, 45.0 / 180]).addTranslate([
                     currentIndex == 0
                         ? Offset(-480.0, -35.0)
@@ -122,7 +125,7 @@ class _CardsPageState extends State<CardsPage>
                         : Offset(280.0, -35)
                   ]),
                   itemWidth: 220.0,
-                  itemHeight: 340.0,
+                  itemHeight: 370.0,
                   // curve: Curves.easeInOutExpo,
                   itemBuilder: (context, index) {
                     return new Container(
@@ -132,28 +135,14 @@ class _CardsPageState extends State<CardsPage>
                       //   tag: '$index',
                       child: Hero(
                         tag: '$index',
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Stack(
-                            children: <Widget>[
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15),
-                                child: Image.asset(
-                                  (index == 0 || index == 2)
-                                      ? 'assets/images/Card1.png'
-                                      : 'assets/images/Card2.png',
-                                ),
-                              ),
-                              // Center(
-                              //     child: Text(
-                              //   index == 0
-                              //       ? 'HDFC Bank'
-                              //       : index == 1
-                              //           ? 'SBI'
-                              //           : index == 2 ? 'Yes Bank' : 'PNB',
-                              //   style: TextStyle(color: Colors.white),
-                              // )),
-                            ],
+                        child: Container(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.asset(
+                              (index == 0 || index == 2)
+                                  ? 'assets/images/Card1.png'
+                                  : 'assets/images/Card2.png',
+                            ),
                           ),
                         ),
                       ),
@@ -166,10 +155,10 @@ class _CardsPageState extends State<CardsPage>
                   loop: false,
                   // fade: 200,
                   pagination: SwiperPagination(
-                      // margin: EdgeInsets.all(30),
-
-                      alignment: Alignment.bottomRight,
-                      ),
+                    // margin: EdgeInsets.all(30),
+                    margin: EdgeInsets.only(top: 440),
+                    alignment: Alignment.center,
+                  ),
                   // physics: BouncingScrollPhysics(),
                   // index: 0,
                   onIndexChanged: (index) {
